@@ -17,50 +17,52 @@ $livros = $statement->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <h1>Cadastro de livros</h1>
 
-   
-    <h2>Adicionar Livro</h2>
-    <form action="add_book.php" method="post">
-        <label for="titulo">Título:</label><br>
-        <input type="text" name="titulo" id="titulo" required><br>
-
-        <label for="autor">Autor:</label><br>
-        <input type="text" name="autor" id="autor" required><br>
-
-        <label for="ano">Ano de Publicação:</label><br>
-        <input type="number" name="ano" id="ano" required><br><br>
-
-        <button type="submit">Adicionar</button>
-    </form>
-
+   <div class = "layout">
+        <h2>Adicionar Livro</h2>
+        <form action="add_book.php" method="post">
+            <label for="titulo">Título:</label><br>
+            <input type="text" name="titulo" id="titulo" required><br>
     
-    <h3>Livros Cadastrados</h3>
-    <table border="2">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Autor</th>
-                <th>Ano</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($livros as $livro): ?>
+            <label for="autor">Autor:</label><br>
+            <input type="text" name="autor" id="autor" required><br>
+    
+            <label for="ano">Ano de Publicação:</label><br>
+            <input type="number" name="ano" id="ano" required><br><br>
+    
+            <button type="submit">Adicionar</button>
+        </form>
+   </div> 
+    
+   <div class = "layout2">    
+        <h2>Livros Cadastrados</h2>
+        <table border="2">
+            <thead>
                 <tr>
-                    <td><?php echo $livro['id']; ?></td>
-                    <td><?php echo $livro['titulo']; ?></td>
-                    <td><?php echo $livro['autor']; ?></td>
-                    <td><?php echo $livro['ano']; ?></td>
-                    <td>
-                        <form action="delete_book.php" method="post" style="display:inline;">
-                            <input type="hidden" name="id" value="<?php echo $livro['id']; ?>">
-                            <button type="submit">Excluir</button>
-                        </form>
-                    </td>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Ano</th>
+                    <th>Ações</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach ($livros as $livro): ?>
+                    <tr>
+                        <td><?php echo $livro['id']; ?></td>
+                        <td><?php echo $livro['titulo']; ?></td>
+                        <td><?php echo $livro['autor']; ?></td>
+                        <td><?php echo $livro['ano']; ?></td>
+                        <td>
+                            <form action="delete_book.php" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="<?php echo $livro['id']; ?>">
+                                <button type="submit">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+   </div>
 </body>
 </html>
 <style> 
@@ -70,14 +72,25 @@ $livros = $statement->fetchAll(PDO::FETCH_ASSOC);
      border: 2px solid #444;
      padding: 5px;
      border-radius: 5px;
-     margin: 10px;
+     margin: auto;
+     margin-bottom: 15px;
      background-color: #f0d2ff;
+     width: 400px;
+  }
+
+  .layout {
+      padding: 10px;
+      margin: auto; 
+      text-align: center;
+      width: 400px;
+      
    }
-  
-  table {
-      width: 50%;
+    
+   table {
+      width: 400px;
       border-collapse: collapse;
-      margin: 10px 0;
+      margin: auto;
+    
     }
 
    th, td {
@@ -89,5 +102,10 @@ $livros = $statement->fetchAll(PDO::FETCH_ASSOC);
    th {
      background-color: #bf2190;
      color: white;
+   }
+
+   .layout2 {
+   text-align: center;
+       
    }
 </style>
